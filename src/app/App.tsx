@@ -235,9 +235,14 @@ function Navbar() {
               </button>
             ))}
             <div className="pt-3 space-y-2 border-t border-slate-100">
-              <button className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-slate-700 border border-slate-200">
-                <Download size={14} /> Resume
-              </button>
+              <a
+                href="/resume.pdf"
+                download="Saravanan_Resume.pdf"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium text-slate-700 border border-slate-200"
+              >
+                <Download size={14} />
+                Resume
+              </a>
               <button
                 className="w-full px-4 py-3 rounded-xl text-sm font-semibold text-white"
                 style={{ background: "linear-gradient(135deg,#38BDF8,#0EA5E9)" }}
