@@ -982,19 +982,7 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image */}
-      <div className="r
-  e{
-    id: 78
-    title: "ACEval AI
-    category: "IoTAI/ML    categoryColor: "#06B6D4",
-    desc: "Smart AC monitoring dashboard tracking power consumption, temperature patterns, and predictive maintenance alerts.",
-    tech: ["ESP32", "FastAPI", "React", "MySQL", "Docker"],
-    image: "\ac.jpeg",
-    icon: <Cpu size={14} />,
-    gradient: "from-cyan-400 to-sky-500",
-    comingSoon : true ,
-  },
-];lative overflow-hidden h-52 bg-slate-100">
+      <div className="relative overflow-hidden h-52 bg-slate-100">
         <img
           src={project.image}
           alt={project.title}
