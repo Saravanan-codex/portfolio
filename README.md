@@ -52,7 +52,3 @@ src/
     components/
   styles/
 ```
-
-## 🙌 Credits
-
-This project is based on a premium Figma design and adapted into a React/Vite experience.
