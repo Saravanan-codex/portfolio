@@ -425,12 +425,12 @@ function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              {/* <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 bg-white/60 backdrop-blur-sm mb-8 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 bg-white/60 backdrop-blur-sm mb-8 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-xs font-semibold text-slate-600 tracking-wide">
                   Full Stack · Flutter · IoT · Python Developer
                 </span>
-              </div> */}
+              </div>
             </motion.div>
 
             <motion.h1
@@ -685,11 +685,11 @@ const SKILL_CATEGORIES = [
     label: "Frontend",
     icon: <Globe size={15} />,
     skills: [
-      { name: "HTML5" },
-      { name: "CSS3" },
-      { name: "JavaScript" },
-      { name: "React" },
-      { name: "Tailwind CSS" },
+      { name: "HTML5", level: 92 },
+      { name: "CSS3", level: 90 },
+      { name: "JavaScript", level: 88 },
+      { name: "React", level: 85 },
+      { name: "Tailwind CSS", level: 90 },
     ],
   },
   {
@@ -697,10 +697,10 @@ const SKILL_CATEGORIES = [
     label: "Backend",
     icon: <Server size={15} />,
     skills: [
-      { name: "Python" },
-      { name: "FastAPI" },
-      { name: "Node.js" },
-      { name: "REST APIs" },
+      { name: "Python", level: 93 },
+      { name: "FastAPI", level: 88 },
+      { name: "Node.js", level: 82 },
+      { name: "REST APIs", level: 90 },
     ],
   },
   {
@@ -708,9 +708,9 @@ const SKILL_CATEGORIES = [
     label: "Mobile",
     icon: <Smartphone size={15} />,
     skills: [
-      { name: "Flutter" },
-      { name: "Dart" },
-      { name: "Firebase" },
+      { name: "Flutter", level: 88 },
+      { name: "Dart", level: 85 },
+      { name: "Firebase", level: 87 },
     ],
   },
   {
@@ -718,10 +718,10 @@ const SKILL_CATEGORIES = [
     label: "Database",
     icon: <Database size={15} />,
     skills: [
-      { name: "MySQL" },
-      { name: "MongoDB" },
-      { name: "Firebase RTDB" },
-      { name: "PostgreSQL" },
+      { name: "MySQL", level: 88 },
+      { name: "MongoDB", level: 82 },
+      { name: "Firebase RTDB", level: 87 },
+      { name: "PostgreSQL", level: 75 },
     ],
   },
   {
@@ -729,10 +729,10 @@ const SKILL_CATEGORIES = [
     label: "IoT",
     icon: <Wifi size={15} />,
     skills: [
-      { name: "ESP32" },
-      { name: "Arduino" },
-      { name: "Raspberry Pi" },
-      { name: "MQTT" },
+      { name: "ESP32", level: 90 },
+      { name: "Arduino", level: 88 },
+      { name: "Raspberry Pi", level: 80 },
+      { name: "MQTT", level: 85 },
     ],
   },
   {
@@ -740,10 +740,10 @@ const SKILL_CATEGORIES = [
     label: "Tools",
     icon: <Wrench size={15} />,
     skills: [
-      { name: "Git / GitHub" },
-      { name: "Docker" },
-      { name: "Linux" },
-      { name: "VS Code" },
+      { name: "Git / GitHub", level: 92 },
+      { name: "Docker", level: 78 },
+      { name: "Linux", level: 85 },
+      { name: "VS Code", level: 95 },
     ],
   },
   {
@@ -751,20 +751,37 @@ const SKILL_CATEGORIES = [
     label: "AI/ML",
     icon: <Brain size={15} />,
     skills: [
-      { name: "OpenCV" },
-      { name: "OCR" },
-      { name: "Machine Learning" },
-      { name: "NumPy / Pandas" },
+      { name: "OpenCV", level: 85 },
+      { name: "OCR", level: 82 },
+      { name: "Machine Learning", level: 75 },
+      { name: "NumPy / Pandas", level: 88 },
     ],
   },
 ];
 
-function SkillBar({ name }: { name: string }) {
+function SkillBar({ name, level }: { name: string; level: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+
   return (
-    <div className="mb-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
-      <span className="text-sm font-medium text-slate-700" style={{ fontFamily: "'Inter', sans-serif" }}>
-        {name}
-      </span>
+    <div ref={ref} className="mb-4">
+      <div className="flex justify-between items-center mb-1.5">
+        <span className="text-sm font-medium text-slate-700" style={{ fontFamily: "'Inter', sans-serif" }}>
+          {name}
+        </span>
+        <span className="text-xs font-semibold text-sky-600" style={{ fontFamily: "'Geist Mono', monospace" }}>
+          {level}%
+        </span>
+      </div>
+      <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          animate={inView ? { width: `${level}%` } : {}}
+          transition={{ duration: 1, delay: 0.2, ease: easeOut }}
+          className="h-full rounded-full"
+          style={{ background: "linear-gradient(90deg,#38BDF8,#0EA5E9)" }}
+        />
+      </div>
     </div>
   );
 }
@@ -911,7 +928,7 @@ const PROJECTS = [
     image:"\ thinkbit.jpeg",
     icon: <Globe2 size={14} />,
     gradient: "from-amber-400 to-orange-500",
-    demoLink: "https://thinkbit.mzcet.in",
+    demolink: "https://thinkbit.mzcet.in",
   },
   {
     id: 6,
@@ -937,20 +954,7 @@ const PROJECTS = [
     gradient: "from-cyan-400 to-sky-500",
     comingSoon : true ,
   },
-  {
-    id: 8,
-    title: "EVAL AI",
-    category: "AI/ML",
-    categoryColor: "#06B6D4",
-    desc: "Developed an AI-powered answer sheet evaluation platform using the Claude API to automate batch assessment and generate structured results through a centralized web system for college examinations.",
-    tech: ["Claude API", "FastAPI", "React", "MSSQL"],
-    image: "\EvalAI.png",
-    icon: <Cpu size={14} />,
-    gradient: "from-cyan-400 to-sky-500",
-    comingSoon : true ,
-  },
 ];
-
 
 function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
   const [hovered, setHovered] = useState(false);
@@ -1822,7 +1826,7 @@ function ContactSection() {
   });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
       e.preventDefault();
 
       try {
