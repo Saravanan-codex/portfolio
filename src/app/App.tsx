@@ -425,7 +425,12 @@ function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: easeOut }}
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 bg-white/60 backdrop-blur-sm mb-8 shadow-sm">
+              {/* <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 bg-white/60 backdrop-blur-sm mb-8 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs font-semibold text-slate-600 tracking-wide">
+                  Full Stack · Flutter · IoT · Python Developer
+                </span>
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-200 bg-white/60 backdrop-blur-sm mb-8 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-xs font-semibold text-slate-600 tracking-wide">
                   Full Stack · Flutter · IoT · Python Developer
@@ -685,11 +690,11 @@ const SKILL_CATEGORIES = [
     label: "Frontend",
     icon: <Globe size={15} />,
     skills: [
-      { name: "HTML5", level: 92 },
-      { name: "CSS3", level: 90 },
-      { name: "JavaScript", level: 88 },
-      { name: "React", level: 85 },
-      { name: "Tailwind CSS", level: 90 },
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "JavaScript" },
+      { name: "React" },
+      { name: "Tailwind CSS" },
     ],
   },
   {
@@ -697,10 +702,10 @@ const SKILL_CATEGORIES = [
     label: "Backend",
     icon: <Server size={15} />,
     skills: [
-      { name: "Python", level: 93 },
-      { name: "FastAPI", level: 88 },
-      { name: "Node.js", level: 82 },
-      { name: "REST APIs", level: 90 },
+      { name: "Python" },
+      { name: "FastAPI" },
+      { name: "Node.js" },
+      { name: "REST APIs" },
     ],
   },
   {
@@ -708,9 +713,9 @@ const SKILL_CATEGORIES = [
     label: "Mobile",
     icon: <Smartphone size={15} />,
     skills: [
-      { name: "Flutter", level: 88 },
-      { name: "Dart", level: 85 },
-      { name: "Firebase", level: 87 },
+      { name: "Flutter" },
+      { name: "Dart" },
+      { name: "Firebase" },
     ],
   },
   {
@@ -718,10 +723,10 @@ const SKILL_CATEGORIES = [
     label: "Database",
     icon: <Database size={15} />,
     skills: [
-      { name: "MySQL", level: 88 },
-      { name: "MongoDB", level: 82 },
-      { name: "Firebase RTDB", level: 87 },
-      { name: "PostgreSQL", level: 75 },
+      { name: "MySQL" },
+      { name: "MongoDB" },
+      { name: "Firebase RTDB" },
+      { name: "PostgreSQL" },
     ],
   },
   {
@@ -729,10 +734,10 @@ const SKILL_CATEGORIES = [
     label: "IoT",
     icon: <Wifi size={15} />,
     skills: [
-      { name: "ESP32", level: 90 },
-      { name: "Arduino", level: 88 },
-      { name: "Raspberry Pi", level: 80 },
-      { name: "MQTT", level: 85 },
+      { name: "ESP32" },
+      { name: "Arduino" },
+      { name: "Raspberry Pi" },
+      { name: "MQTT" },
     ],
   },
   {
@@ -740,10 +745,10 @@ const SKILL_CATEGORIES = [
     label: "Tools",
     icon: <Wrench size={15} />,
     skills: [
-      { name: "Git / GitHub", level: 92 },
-      { name: "Docker", level: 78 },
-      { name: "Linux", level: 85 },
-      { name: "VS Code", level: 95 },
+      { name: "Git / GitHub" },
+      { name: "Docker" },
+      { name: "Linux" },
+      { name: "VS Code" },
     ],
   },
   {
@@ -751,15 +756,15 @@ const SKILL_CATEGORIES = [
     label: "AI/ML",
     icon: <Brain size={15} />,
     skills: [
-      { name: "OpenCV", level: 85 },
-      { name: "OCR", level: 82 },
-      { name: "Machine Learning", level: 75 },
-      { name: "NumPy / Pandas", level: 88 },
+      { name: "OpenCV" },
+      { name: "OCR" },
+      { name: "Machine Learning" },
+      { name: "NumPy / Pandas" },
     ],
   },
 ];
 
-function SkillBar({ name, level }: { name: string; level: number }) {
+function SkillBar({ name }: { name: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
@@ -769,14 +774,11 @@ function SkillBar({ name, level }: { name: string; level: number }) {
         <span className="text-sm font-medium text-slate-700" style={{ fontFamily: "'Inter', sans-serif" }}>
           {name}
         </span>
-        <span className="text-xs font-semibold text-sky-600" style={{ fontFamily: "'Geist Mono', monospace" }}>
-          {level}%
-        </span>
       </div>
       <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
-          animate={inView ? { width: `${level}%` } : {}}
+          animate={inView ? { width: "100%" } : {}}
           transition={{ duration: 1, delay: 0.2, ease: easeOut }}
           className="h-full rounded-full"
           style={{ background: "linear-gradient(90deg,#38BDF8,#0EA5E9)" }}
@@ -954,6 +956,18 @@ const PROJECTS = [
     gradient: "from-cyan-400 to-sky-500",
     comingSoon : true ,
   },
+  {
+    id: 8,
+    title: "Eval AI",
+    category: "AI/ML",
+    categoryColor: "#06B6D4",
+    desc: "Developed an AI-powered answer sheet evaluation platform using the Claude API to automate batch assessment and generate structured results through a centralized web system for college examinations.",
+    tech: ["Claude API", "FastAPI", "React", "MSSQL"],
+    image: "\EvalAI.png",
+    icon: <Cpu size={14} />,
+    gradient: "from-cyan-400 to-sky-500",
+    comingSoon : true ,
+  },
 ];
 
 function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
@@ -968,7 +982,19 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image */}
-      <div className="relative overflow-hidden h-52 bg-slate-100">
+      <div className="r
+  e{
+    id: 78
+    title: "ACEval AI
+    category: "IoTAI/ML    categoryColor: "#06B6D4",
+    desc: "Smart AC monitoring dashboard tracking power consumption, temperature patterns, and predictive maintenance alerts.",
+    tech: ["ESP32", "FastAPI", "React", "MySQL", "Docker"],
+    image: "\ac.jpeg",
+    icon: <Cpu size={14} />,
+    gradient: "from-cyan-400 to-sky-500",
+    comingSoon : true ,
+  },
+];lative overflow-hidden h-52 bg-slate-100">
         <img
           src={project.image}
           alt={project.title}
@@ -1827,63 +1853,7 @@ function ContactSection() {
   const [sent, setSent] = useState(false);
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-
-      try {
-        const response = await fetch(
-          "https://formcarry.com/s/0L5WtXMlcBI",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(form),
-          }
-        );
-
-        if (response.ok) {
-          setSent(true);
-
-          setForm({
-            name: "",
-            email: "",
-            company: "",
-            type: "",
-            budget: "",
-            message: "",
-          });
-        } else {
-          alert("Failed to send message.");
-        }
-      } catch (error) {
-        console.error(error);
-        alert("Something went wrong.");
-      }
-    };
-
-  const inputCls = "w-full px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all duration-200 bg-white";
-
-  return (
-    <section
-      id="contact"
-      className="py-28 relative"
-      style={{ zIndex: 1, background: "#F8FAFC" }}
-    >
-      <div className="max-w-7xl mx-auto px-6">
-        <FadeUp className="text-center mb-16">
-          <Pill label="Get In Touch" />
-          <h2
-            className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight"
-            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-          >
-            Let's Build Something{" "}
-            <span style={{ color: "#0EA5E9" }}>Amazing</span> Together
-          </h2>
-          <p className="mt-4 text-slate-500 max-w-xl mx-auto" style={{ fontFamily: "'Inter', sans-serif" }}>
-            Have a project in mind? I'm currently accepting new clients. Drop a message and I'll reply within 24 hours.
-          </p>
-        </FadeUp>
+    </FadeUp>
 
         <div className="grid lg:grid-cols-5 gap-12">
           {/* Left info */}
@@ -1910,7 +1880,7 @@ function ContactSection() {
                         {info.icon}
                       </div>
                       <div>
-                        <div className="text-xs text-slate-400 font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>
+                        <div className="text-xs text-slate-400 font-medium" style={{ f: "'Inter', sans-serif" }}>
                           {info.label}
                         </div>
                         <div className="text-sm font-semibold text-slate-700" style={{ fontFamily: "'Inter', sans-serif" }}>
